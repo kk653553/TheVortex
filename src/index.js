@@ -1,11 +1,29 @@
-var openNavBtn = document.getElementById('openNav');
-var closeNavBtn = document.getElementById('closeNav');
-var navElement = document.getElementById('nav-main');
+const navToggle = document.querySelector('#navToggle');
+const navClose = document.querySelector('#navClose');
+const sidebar = document.querySelector('.sidebar');
 
-openNavBtn.addEventListener('click', function() {
-  navElement.classList.add('nav-open');
+navToggle.addEventListener("click",function() {
+  if(navToggle.classList.contains("fa-bars")) 
+  {
+    navToggle.classList.replace("fa-bars","fa-times")
+  }
+  
+  else {
+    navToggle.classList.replace("fa-times","fa-bars");
+  }
+  
+  sidebar.classList.toggle("showSidebar")
 });
 
-closeNavBtn.addEventListener('click', function() {
-  navElement.classList.remove('nav-open');
-});
+// Glow Effect
+
+const blob = document.getElementById("blob");
+
+window.onpointermove = event => { 
+  const { clientX, clientY } = event;
+  
+  blob.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 2000, fill: "forwards" });
+}
